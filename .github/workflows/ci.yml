@@ -18,10 +18,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build Docker Image
         run: |
-          docker build --tag ghcr.io/$GITHUB_ACTOR/batch-test:latest \
+          docker build --tag ghcr.io/$GITHUB_REPOSITORY_OWNER/batch-test:latest \
           --tag ghcr.io/$GITHUB_ACTOR/batch-test:$(echo $GITHUB_SHA | head -c7) \
           .
       - name: Push Docker Image
         run: |
-          docker push ghcr.io/$GITHUB_ACTOR/batch-test:latest
-          docker push ghcr.io/$GITHUB_ACTOR/batch-test:$(echo $GITHUB_SHA | head -c7)
+          docker push ghcr.io/$GITHUB_REPOSITORY_OWNER/batch-test:latest
+          docker push ghcr.io/$GITHUB_REPOSITORY_OWNER/batch-test:$(echo $GITHUB_SHA | head -c7)
