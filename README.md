@@ -26,6 +26,20 @@ It can support both local machine (dev mode) and other Cloud platform, e.g. AWS 
 
 NOTE: however there's a manual infrastructure setup required. If we want to try to avoid infrastructure set up, [AWS Batch](https://aws.amazon.com/batch/) may be more suitable.
 
+## How Nomad is used in this repo
+
+```
+terminal: batch request to run nomad jobs -> Nomad cluster -> Docker job (including retry on failure)
+                                                           -> Docker job
+                                                           -> Docker job
+```
+
+Dockerfile runs very simple ruby script:
+
+1. Stdout input argument (passed via BATCH_TASK_INPUT env var)
+2. Sleep 5 seconds
+3. Raise an error with a probability of 1 in 10, otherwise stdout "Successfully finished"
+
 ## Prequisites
 
 - Docker Desktop is installed (Docker Desktop alternatives may not work, e.g., Orb stack)
