@@ -1,6 +1,6 @@
 # nomad-batch
 
-Experimentation run multiple Docker container with different parameters on Nomad
+An experimentation to run multiple Docker container with different parameters on Nomad
 
 ## Why Nomad?
 
